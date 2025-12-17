@@ -1,0 +1,49 @@
+# TODO
+
+Use these Markdown checkboxes. Type `[x]` to check, `[ ]` to uncheck.
+
+# GENERAL
+
+- [ ] Remove toggle for Light/Dark mode. Use icon instead.
+- [ ] Add keyboard/touchpad scrolling functionality. 
+- [ ] Interactive objects should be minimum 44x44px on mobile. 
+- [ ] Have the burger icon morph into the cross on Model open. 
+
+# LANDING
+
+- [ ] Change "Hello, my name is" text color in Light Mode.
+- [ ] Remove ! from "View my Resume!".
+- [ ] Update AI picture with actual photograph. 
+
+# EXPERIENCE
+
+- [ ] Implement code blocks as a carousel, looping endlessly.
+
+# PROJECTS
+
+- [ ] Fix mobile breakpoints for spacing. Everything beyond 640px is Mobile.
+
+# FOOTER
+
+- [ ] Change overlay to not blend with the text.
+
+# PROJECT VIEW
+
+- [ ] Increase font under /Project heading.
+- [ ] Remove . from /Project. 
+- [ ] Change color of one of the buttons "View More", "Learn More". 
+- [ ] Change projects to be a carousel, single page view.
+
+# RESUME VIEW
+
+- [ ] Change from "Junior Software Engineer"
+- [ ] Update work history. 
+- [ ] Hyperlink "Sam Key" to go to LinkedIn.
+- [ ] Remove LinkedIn icon from Resume.
+- [ ] Change "walk-throughs provided on request" to "want to know more? Lets chat!".
+
+
+
+# TIPS
+
+Use websites such as Unsplash and Vectorly for Clipart.
