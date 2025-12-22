@@ -8,7 +8,7 @@
                     <h2>Software Developer</h2>
                 </div>
                 <div class="btnwrapper">
-                    <button v-on:click="openCV()" download>View my Resume!</button>
+                    <button v-on:click="openCV()" download>View my Resume</button>
                 </div>
             </div>
             <div class="img-handle">

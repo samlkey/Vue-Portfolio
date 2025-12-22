@@ -2,7 +2,7 @@
     <div class="projects-content">
         <div class="project-wrapper">
             <div class="projects-title">
-                <h1>/Projects.</h1>
+                <h1>/Projects</h1>
                 <p>Feel free to take a look at some of the projects. Some of these are still work in progress.</p>
             </div>
 
