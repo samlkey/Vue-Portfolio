@@ -1,5 +1,5 @@
 <template>
-    <div id="contactScroll">
+    <div id="contactScroll" name="scroll">
         <div class="contactContent">
             <h1 class="conTitle">Send me a message!</h1>
             <div class="contact">

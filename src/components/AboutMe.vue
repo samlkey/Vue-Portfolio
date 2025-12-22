@@ -1,5 +1,5 @@
 <template>
-    <div class="aboutMe" id="aboutMe">
+    <div class="aboutMe" id="aboutMe" name="scroll">
         <div class="aboutMe-wrapper" id="slide-in-right">
             <div class="left-flex">
                 <h1 class="aboutMeTitle" id="slide-in-right">About Me</h1>

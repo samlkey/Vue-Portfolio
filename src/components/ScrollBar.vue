@@ -1,26 +1,63 @@
-<template>
-    <div class="scrollBar">
-        <div class="bar">        
-            <div class="pointer"></div>
-            <p>1</p>
-        </div>
-    </div>
-</template>
 <script>
 export default {
     name: 'ScrollBar',
     data() {
         return { 
             pageIndex: 0,
-            pageTags: ["top", "aboutMe", "languageScroll", "projectScroll", "contactScroll", "footerScroll"],
+            pageTags: [],
             animations: ["slide-in-right", "scale-in-bottom", "scale-in-ver-bottom", "tracking-in-expand"],
-            currentTab: "top",
-            shouldScroll: true
+            currentTab: null,
+            shouldScroll: true,
+            wheelCooldown: false
         }
     },
     mounted() {
+        // Automatically collect all divs with name="scroll"
+        const scrollDivs = document.querySelectorAll('div[name="scroll"]');
+        this.pageTags = Array.from(scrollDivs).map(div => div.id).filter(id => id);
+        
+        // Set initial currentTab if we have tags
+        if (this.pageTags.length > 0) {
+            this.currentTab = document.getElementById(this.pageTags[0]);
+        }
+        
         window.addEventListener("wheel", (e) => {
+           if (this.wheelCooldown) {
+               e.preventDefault();
+               return;
+           }
+           
+           e.preventDefault();
+           console.log(scrollDivs)
            this.Scroll(e)
+           
+           this.wheelCooldown = true;
+           setTimeout(() => {
+               this.wheelCooldown = false;
+           }, 1000)
+        }, { passive: false })
+        
+        window.addEventListener("keydown", (e) => {
+           if (this.wheelCooldown) {
+               e.preventDefault();
+               return;
+           }
+           
+           if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+               e.preventDefault();
+               // Create a fake wheel event object
+               const fakeEvent = {
+                   deltaY: e.key === "ArrowDown" ? 1 : -1
+               };
+               this.Scroll(fakeEvent)
+
+               console.log(scrollDivs)
+               
+               this.wheelCooldown = true;
+               setTimeout(() => {
+                   this.wheelCooldown = false;
+               }, 1000)
+           }
         })
     },
     methods: {        

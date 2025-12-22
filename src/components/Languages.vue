@@ -1,5 +1,5 @@
 <template>
-    <div id="languageScroll">
+    <div id="languageScroll" name="scroll">
         <div class="mainlang-wrapper">
             <div class="lang-title">
                 <h1>Experience</h1>

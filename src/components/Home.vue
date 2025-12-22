@@ -1,5 +1,5 @@
 <template>
-    <div class="home">
+    <div class="home" id="homeScroll" name="scroll">
         <div class="home-backdrop">
             <div class="home-backdrop-content">
                 <h1 class="home-backdrop-content-intro">Hello, my name is</h1>

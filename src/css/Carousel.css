@@ -1,0 +1,123 @@
+.carousel {
+  font-size: 1vh;
+  background-color: var(--main-colour);
+  color: var(--text-colour);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.carousel-header {
+  font-size: 1.5vh;
+  text-align: center;
+  padding-top: 20vh;
+}
+
+.carousel-header h1 {
+  margin: 0;
+  font-family: LeagueSpartan;
+}
+
+.carousel-viewport {
+  position: relative;
+  width: 70vw;
+  overflow: hidden;
+  background-color: var(--indent-colour);
+  margin-top: 6vh;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.35s ease-in-out;
+  width: 100%;
+}
+
+.slide {
+  min-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3vw;
+  padding: 8vh 4vw;
+}
+
+.img-holder {
+  background-color: var(--secondary-colour);
+  width: 30vw;
+  aspect-ratio: 1 / 1;
+  max-width: 500px;
+  min-width: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.img-holder img { width: 15vw; }
+.img-holder:hover { transform: scale(0.95); cursor: pointer; }
+
+.proj-name { width: 32vw; }
+.proj-name h1 { margin: 0 0 1vh 0; }
+.proj-name p { margin: 0 0 3vh 0; }
+
+.proj-link a div button {
+  font-size: 12px;
+  border: 1px solid var(--text-colour);
+  width: 15vw;
+  height: 5vh;
+  background-color: var(--primary-colour);
+  color: var(--text-colour);
+  font-weight: bold;
+  border-radius: 0;
+  transition: transform 0.3s ease-in-out;
+}
+
+.proj-link a div button:hover { transform: scale(1.05); cursor: pointer; }
+
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--primary-colour);
+  border: 1px solid var(--text-colour);
+  color: var(--text-colour);
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.nav.prev { left: 10px; }
+.nav.next { right: 10px; }
+
+.dots { display: flex; gap: 8px; margin: 2vh 0 10vh 0; }
+.dot {
+  appearance: none;
+  box-sizing: border-box;
+  padding: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--secondary-colour);
+  border: 1px solid var(--text-colour);
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+.dot.active {
+  background: var(--primary-colour);
+  border-color: var(--primary-colour);
+  transform: scale(1.4);
+}
+
+/* Mobile */
+@media (max-width: 600px), (orientation: portrait) {
+  .carousel-header { font-size: 1.8vh; padding-top: 14vh; }
+  .carousel-viewport { width: 90vw; }
+  .slide { flex-direction: column; gap: 2vh; padding: 6vh 4vw; }
+  .img-holder { width: 60vw; }
+  .img-holder img { width: 40vw; }
+  .proj-name { width: 80vw; }
+  .proj-link a div button { height: 3vh; width: 35vw; font-size: 10px; }
+}

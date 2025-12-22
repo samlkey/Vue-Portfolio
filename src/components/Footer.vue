@@ -1,5 +1,5 @@
 <template> 
-    <div class="footer" id="footerScroll">
+    <div class="footer" id="footerScroll" name="scroll">
         <div class="footerContent">
             <div class="footerTop" id="scale-in-ver-bottom-delay">
                 <div class="topFlex">

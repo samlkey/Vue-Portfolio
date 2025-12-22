@@ -14,7 +14,7 @@ const routes = [
     path: "/projects",
     name: 'projects',
     component: Projects,
-    meta: { hideOverflow: false }
+    meta: { hideOverflow: true }
   },
   {
     path: "/resume",

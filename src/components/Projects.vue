@@ -1,5 +1,5 @@
 <template>
-    <div id="projectScroll">
+    <div id="projectScroll" name="scroll">
         <div class="projWrapper">
             <div class="projContent">
                 <div class="projLeft">
