@@ -1,3 +1,14 @@
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 998;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -7,8 +18,9 @@
     height: auto;
     padding: 1.5rem;
     z-index: 999;
-    background: none; /* Optional: no overlay background */
+    background: none;
     font-family: LeagueSpartan;
+    pointer-events: none;
 }
   
 .modal-content {
@@ -21,6 +33,7 @@
   animation: scaleUp 0.5s ease-in-out;
   transform-origin: top right;
   color: var(--text-colour);
+  pointer-events: auto;
 }
 
 .modal-header {
@@ -89,6 +102,15 @@
   
 .after-sel:hover::before {
     opacity: 1;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 @media (max-width: 600px), (orientation: portrait) {

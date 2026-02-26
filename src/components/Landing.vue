@@ -2,15 +2,17 @@
   <div>
     <div class="main" id="top">
       <div class="content">
-        <Home></Home>
-        <AboutMe></AboutMe>
-        <Languages></Languages>
-        <Projects></Projects>
-        <Contact></Contact>
-        <Footer @pageChange="handlePageChange"></Footer>
+        <div class="sections-wrapper" ref="sectionsWrapper">
+          <Home></Home>
+          <AboutMe></AboutMe>
+          <Languages></Languages>
+          <Projects></Projects>
+          <Contact></Contact>
+          <Footer></Footer>
+        </div>
       </div>
     </div>
-    <ScrollBar ref="childRef"></ScrollBar>
+    <ScrollBar @navigate="handleNavigate"></ScrollBar>
   </div>
   </template>
   
@@ -23,9 +25,7 @@
     import Languages from './Languages.vue';
     import Projects from './Projects.vue'
     import { BANNER_CONTENT } from '../static/constants'
-    import { ref } from 'vue';
   
-    const childRef = ref(null);
     document.title = "Sam Key's Resume"
   
     export default {
@@ -46,10 +46,10 @@
           )
           console.log(ascii + BANNER_CONTENT);
         },
-        handlePageChange : function(msg){
-          console.log(childRef.value)
-          if (childRef.value) {
-            childRef.value.UpdateIndex(msg);
+        handleNavigate(index) {
+          const wrapper = this.$refs.sectionsWrapper;
+          if (wrapper) {
+            wrapper.style.transform = `translateY(-${index * 100}vh)`;
           }
         }
       },

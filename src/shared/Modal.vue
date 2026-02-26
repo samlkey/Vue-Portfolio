@@ -1,7 +1,8 @@
 <template>
     <div v-if="visible">
+        <div class="modal-backdrop" @click="$emit('close')"></div>
         <div class="modal-overlay">
-            <div class="modal-content">
+            <div class="modal-content" @click.stop>
                 <div class="modal-header">
                     <h1 @click="$emit('close')">X</h1>
                 </div>
@@ -10,10 +11,6 @@
                     <p class="after-sel" @click="hrefChange('/')">Home</p>
                     <p class="after-sel" @click="hrefChange('/projects')">My Projects</p>
                     <p class="after-sel" v-on:click="hrefChange('/resume')">My Resume</p>
-                </div>
-
-                <div class="modal-contact">
-                    <p class="after-sel">sam@email.com</p>
                 </div>
 
                 <div class="modal-icons">

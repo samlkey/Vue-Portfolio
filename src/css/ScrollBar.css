@@ -1,59 +1,63 @@
-.scrollBar{
-    display: block;
-    bottom: 0;
-    left: 48px;
-    width: 5%;
-    height: 100%;
-    position: fixed;
-    display: none;
-}
+/* ScrollBar animations */
 
-.bar {
-    background-color: white;
-    height: 70%;
-    width: 5%;
-    margin: 90px auto 0 auto;
-    overflow-y: auto;
-    max-height: 1200px;
-}
-
-.pointer {
-    width: 100%;
-    height: 80px;
-    background-color: red;
-    z-index: 99;
-    position: relative;
-
-
-}
-
-/*MOBILE */
-@media only screen and (max-width: 600px) {
-    .scrollBar{
-        display: none;
+@keyframes slide-in-right {
+    0% {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
     }
 }
 
-
-
-
-/* html::-webkit-scrollbar{
-    width: 2em;
+@keyframes scale-in-bottom {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
-html::-webkit-scrollbar-track{
-    background: white;
-    bottom: 0;
-    left: 48px;
-    width: 5%;
-    height: 100%;
-    margin-right: 90%;
-    position: fixed;
+@keyframes scale-in-ver-bottom {
+    0% {
+        transform: scaleY(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scaleY(1);
+        opacity: 1;
+    }
 }
 
-html::-webkit-scrollbar-thumb{
-    background: red;
+@keyframes tracking-in-expand {
+    0% {
+        letter-spacing: -0.5em;
+        opacity: 0;
+    }
+    40% {
+        opacity: 0.6;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
- */
+.slide-in-right {
+    animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
 
+.scale-in-bottom {
+    animation: scale-in-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.scale-in-ver-bottom {
+    animation: scale-in-ver-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.tracking-in-expand {
+    animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+}
