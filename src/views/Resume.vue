@@ -188,7 +188,7 @@
         </div>
     </div>
 </template>
-<style src="../css/Resume.css" />
+<style src="../css/Resume.scss" lang="scss" />
 
 <script>
     export default {

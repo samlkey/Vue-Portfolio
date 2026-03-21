@@ -1,3 +1,5 @@
+@import 'mixins';
+
 .box {
     background: var(--indent-colour);
     padding: 2% 2% 2% 2%;
@@ -5,33 +7,33 @@
     text-align: left;
     width: 90px; 
     height: 60px; 
-    
     min-width: 90px; 
     min-height: 60px; 
     cursor: pointer;
-
-
-
-
     display: flex;
     flex-direction: column;
     align-items: center; 
-}
 
-.box h1 {
-    margin: auto 0 auto 0;   
-    font-weight: bold;
-    font-size: 16px;
-}
+    & > h1 {
+        margin: auto 0 auto 0;   
+        font-weight: bold;
+        font-size: 16px;
+    }
 
-.box img {
-    margin: auto 0 auto 0; 
-    height:35px;
-    width: auto;  
-}
+    & > img {
+        margin: auto 0 auto 0; 
+        height: 35px;
+        width: auto; 
+    }
 
-.box:hover {
-    animation: scale-up-center-small 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    &:hover {
+        animation: scale-up-center-small 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    }
+
+    @include mobile {
+        width: 80px; 
+        height: 50px; 
+    }
 }
 
 @keyframes scale-up-center-small {
@@ -43,13 +45,4 @@
       -webkit-transform: scale(1.1);
               transform: scale(1.1);
     }
-}
-
-@media (max-width: 600px), (orientation: portrait) {
-    .box{
-        width: 80px; 
-        height: 50px; 
-    }
-
-  
 }

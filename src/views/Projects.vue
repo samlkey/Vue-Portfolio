@@ -53,4 +53,4 @@ export default {
 };
 </script>
 
-<style src="../css/ProjectsView.css" />
+<style src="../css/ProjectsView.scss" lang="scss" />

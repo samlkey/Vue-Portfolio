@@ -14,4 +14,4 @@
         }
     }
 </script>
-<style src="../css/LangBlock.css" /> 
+<style src="../css/LangBlock.scss" lang="scss" /> 

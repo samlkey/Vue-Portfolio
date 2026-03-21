@@ -31,4 +31,4 @@
         }
     }
 </script>
-<style src="../css/Home.css" />
+<style src="../css/Home.scss" lang="scss" />

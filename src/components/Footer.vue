@@ -46,4 +46,4 @@ export default {
 }
 </script>
 
-<style src="../css/Footer.css" />
+<style src="../css/Footer.scss" lang="scss" />

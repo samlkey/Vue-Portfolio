@@ -38,4 +38,4 @@ export default{
 
 
 
-<style src="../css/Header.css" />
+<style src="../css/Header.scss" lang="scss" />

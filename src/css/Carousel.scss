@@ -1,3 +1,5 @@
+@import 'mixins';
+
 .carousel {
   font-size: 1vh;
   background-color: var(--main-colour);
@@ -12,11 +14,16 @@
   font-size: 1.5vh;
   text-align: center;
   padding-top: 20vh;
-}
 
-.carousel-header h1 {
-  margin: 0;
-  font-family: LeagueSpartan;
+  & > h1 {
+    margin: 0;
+    font-family: LeagueSpartan;
+  }
+
+  @include mobile {
+    font-size: 1.8vh;
+    padding-top: 14vh;
+  }
 }
 
 .carousel-viewport {
@@ -25,6 +32,10 @@
   overflow: hidden;
   background-color: var(--indent-colour);
   margin-top: 6vh;
+
+  @include mobile {
+    width: 90vw;
+  }
 }
 
 .slides {
@@ -40,6 +51,12 @@
   justify-content: center;
   gap: 3vw;
   padding: 8vh 4vw;
+
+  @include mobile {
+    flex-direction: column;
+    gap: 2vh;
+    padding: 6vh 4vw;
+  }
 }
 
 .img-holder {
@@ -52,28 +69,69 @@
   justify-content: center;
   align-items: center;
   transition: transform 0.3s ease-in-out;
+
+  & > img {
+    width: 15vw;
+
+    @include mobile {
+      width: 40vw;
+    }
+  }
+
+  &:hover {
+    transform: scale(0.95);
+    cursor: pointer;
+  }
+
+  @include mobile {
+    width: 60vw;
+  }
 }
 
-.img-holder img { width: 15vw; }
-.img-holder:hover { transform: scale(0.95); cursor: pointer; }
+.proj-name {
+  width: 32vw;
 
-.proj-name { width: 32vw; }
-.proj-name h1 { margin: 0 0 1vh 0; }
-.proj-name p { margin: 0 0 3vh 0; }
+  & h1 {
+    margin: 0 0 1vh 0;
+  }
 
-.proj-link a div button {
-  font-size: 12px;
-  border: 1px solid var(--text-colour);
-  width: 15vw;
-  height: 5vh;
-  background-color: var(--primary-colour);
-  color: var(--text-colour);
-  font-weight: bold;
-  border-radius: 0;
-  transition: transform 0.3s ease-in-out;
+  & p {
+    margin: 0 0 3vh 0;
+  }
+
+  @include mobile {
+    width: 80vw;
+  }
 }
 
-.proj-link a div button:hover { transform: scale(1.05); cursor: pointer; }
+.proj-link {
+  & a {
+    & div {
+      & button {
+        font-size: 12px;
+        border: 1px solid var(--text-colour);
+        width: 15vw;
+        height: 5vh;
+        background-color: var(--primary-colour);
+        color: var(--text-colour);
+        font-weight: bold;
+        border-radius: 0;
+        transition: transform 0.3s ease-in-out;
+
+        &:hover {
+          transform: scale(1.05);
+          cursor: pointer;
+        }
+
+        @include mobile {
+          height: 3vh;
+          width: 35vw;
+          font-size: 10px;
+        }
+      }
+    }
+  }
+}
 
 .nav {
   position: absolute;
@@ -87,12 +145,22 @@
   display: grid;
   place-items: center;
   cursor: pointer;
+
+  &.prev {
+    left: 10px;
+  }
+
+  &.next {
+    right: 10px;
+  }
 }
 
-.nav.prev { left: 10px; }
-.nav.next { right: 10px; }
+.dots {
+  display: flex;
+  gap: 8px;
+  margin: 2vh 0 10vh 0;
+}
 
-.dots { display: flex; gap: 8px; margin: 2vh 0 10vh 0; }
 .dot {
   appearance: none;
   box-sizing: border-box;
@@ -104,20 +172,10 @@
   border: 1px solid var(--text-colour);
   cursor: pointer;
   transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
-}
-.dot.active {
-  background: var(--primary-colour);
-  border-color: var(--primary-colour);
-  transform: scale(1.4);
-}
 
-/* Mobile */
-@media (max-width: 600px), (orientation: portrait) {
-  .carousel-header { font-size: 1.8vh; padding-top: 14vh; }
-  .carousel-viewport { width: 90vw; }
-  .slide { flex-direction: column; gap: 2vh; padding: 6vh 4vw; }
-  .img-holder { width: 60vw; }
-  .img-holder img { width: 40vw; }
-  .proj-name { width: 80vw; }
-  .proj-link a div button { height: 3vh; width: 35vw; font-size: 10px; }
+  &.active {
+    background: var(--primary-colour);
+    border-color: var(--primary-colour);
+    transform: scale(1.4);
+  }
 }

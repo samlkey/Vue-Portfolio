@@ -30,4 +30,4 @@
         }
     }
 </script>
-<style src="../css/ProjectBlock.css" /> 
+<style src="../css/ProjectBlock.scss" lang="scss" /> 

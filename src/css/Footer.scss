@@ -1,0 +1,138 @@
+@import 'mixins';
+
+.footer {
+    height: 100vh;
+    background-color: var(--primary-colour);
+    color: var(--text-colour);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include mobile {
+        height: auto;
+        padding: 2rem;
+    }
+}
+
+.footerContent {
+    width: 80vw;
+
+    @include mobile {
+        width: 90vw;
+        text-align: center;
+    }
+}
+
+.footerTop {
+    border-bottom: 1px solid var(--text-colour);
+    padding-bottom: 15vh;
+
+    @include mobile {
+        padding-bottom: 5vh;
+    }
+}
+
+.topFlex {
+    display: flex;
+    gap: 25%;
+
+    & > p {
+        font-weight: bold;
+        font-size: 2.5vh;
+        cursor: pointer;
+    }
+
+    & > div > p {
+        position: relative;
+        z-index: 1;
+
+        &::before {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 20px;
+            background-color: var(--textaccent-colour);
+            top: -2px;   /* adjust for vertical offset */
+            left: -15px;  /* adjust for horizontal offset */
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: -1;
+        }
+
+        &:hover::before {
+            opacity: 1;
+        }
+    }
+
+    @include mobile {
+        flex-direction: column;
+        gap: 15%;
+        font-size: 18px;
+    }
+}
+
+.footerIcons {
+    display: flex;
+    gap: 5%;
+    padding-top: 3%;
+
+    & > div {
+        width: 50%;
+
+        @include mobile {
+            width: 100%;
+        }
+    }
+
+    @include mobile {
+        flex-direction: column;
+        padding-top: 5vh;
+    }
+}
+
+.copyright {
+    font-size: 25px;
+    font-family: LeagueSpartan;
+
+    @include mobile {
+        font-size: 20px;
+    }
+}
+
+.icons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 3%;
+    align-items: center;
+
+    & > div {
+        width: 5% !important;
+
+        @include mobile {
+            width: 10%;
+        }
+    }
+
+    @include mobile {
+        justify-content: center;
+        width: 100%;
+        gap: 5%;
+    }
+}
+
+.icon {
+    width: 2.5rem;
+    height: auto;
+    fill: var(--text-colour);
+    -webkit-animation: scale-down-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: scale-down-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+
+    &:hover {
+        -webkit-animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+        animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    }
+
+    @include mobile {
+        height: 30px;
+    }
+}

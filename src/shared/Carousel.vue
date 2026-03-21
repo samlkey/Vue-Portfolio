@@ -121,4 +121,4 @@ export default {
 };
 </script>
 
-<style src="../css/Carousel.css" />
+<style src="../css/Carousel.scss" lang="scss" />

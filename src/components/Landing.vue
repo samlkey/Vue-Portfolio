@@ -58,5 +58,5 @@
       }
     }
   </script>
-  <style src="../css/App.css" />
+  <style src="../css/App.scss" lang="scss" />
   

@@ -1,0 +1,126 @@
+@import 'mixins';
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin-right: 1vw;
+    width: auto;
+    height: auto;
+    padding: 1.5rem;
+    z-index: 999;
+    background: none;
+    font-family: LeagueSpartan;
+
+    @include mobile {
+        top: 0;
+        left: 0;
+        margin: 0;
+        padding: 0;
+    }
+}
+  
+.modal-content {
+    background: var(--secondary-colour);
+    padding: 1.5rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    min-width: 350px;
+    min-height: 500px;
+    position: relative;
+    animation: scaleUp 0.5s ease-in-out;
+    transform-origin: top right;
+    color: var(--text-colour);
+
+    @include mobile {
+        height: 100vh;
+    }
+}
+
+.modal-header {
+    text-align: right;
+    margin: 0;
+    font-size: 1.2em;
+
+    & > h1 {
+        margin: 0;
+        cursor: pointer;
+    }
+}
+
+.modal-links{
+    font-size: 1.8em;
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--text-colour);
+    animation: scale-in-ver-bottom 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation-delay: 0.3s;
+
+    & > p {
+        cursor: pointer;
+    }
+
+    @include mobile {
+        padding-top: 4rem;
+        padding-bottom: 8rem;
+        padding-left: 2rem;
+    }
+}
+
+.modal-contact{
+    font-size: 2em;
+    padding-left: 1.5rem;
+    padding-top: 1.5rem;
+    margin-bottom: 10vh;
+    animation: scale-in-ver-bottom 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation-delay: 0.6s;
+
+    @include mobile {
+        padding-left: 2rem;
+    }
+}
+
+.modal-icons{
+    display: flex;
+    gap: .5vw;
+    padding-left: 1.3rem;
+    padding-top: 1rem;
+    animation: scale-in-ver-bottom 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation-delay: 1s;
+
+    & > a {
+        width: 2vw;
+    }
+
+    @include mobile {
+        padding-left: 1.5rem;
+        gap: 10vw;
+    }
+}
+
+.after-sel {
+    position: relative;
+    z-index: 1;
+
+    &::before {
+        content: '';
+        position: absolute;
+        width: 60px;
+        height: 20px;
+        background-color: var(--textaccent-colour);
+        top: -8px;
+        left: -10px;
+        opacity: 0;
+        transition: opacity 0.3s;
+        z-index: -1;
+    }
+
+    &:hover::before {
+        opacity: 1;
+    }
+}
+  
+svg {
+    @include mobile {
+        width: 3rem;
+        height: auto;
+    }
+}

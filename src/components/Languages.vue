@@ -69,4 +69,4 @@ export default{
     }
 }
 </script>
-<style src="../css/Languages.css" />
+<style src="../css/Languages.scss" lang="scss" />

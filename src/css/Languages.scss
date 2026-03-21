@@ -1,8 +1,9 @@
+@import 'mixins';
+
 #languageScroll{
     height: 100vh;
     background-color: var(--main-colour);
     color: var(--text-colour);
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -10,11 +11,21 @@
 
 .mainlang-wrapper {
     width: 70vw;
+
+    @include mobile {
+        width: 80vw;
+    }
 }
 
 .langwrap{
     display: flex;
     gap: 2vw;
+
+    @include mobile {
+        display: block;
+        margin: 0 auto 0 auto;
+        width: 35%;
+    }
 }
 
 .langflavour{
@@ -25,17 +36,31 @@
     text-align: center;
     margin-left: auto;
     margin-right: auto;
+
+    @include mobile {
+        width: 100%;
+        margin-bottom: 5vh;
+    }
 }
 
 .lang-right{
     width: 27.3vw;
     height: 80%;
     text-align: center;
-}
 
-.lang-right div{
-    margin-top: 2vh;
-    
+    & > div {
+        margin-top: 2vh;
+
+        @include mobile {
+            margin-top: .3vh;
+        }
+    }
+
+    & > h1 {
+        @include mobile {
+            display: none;
+        }   
+    }
 }
 
 .lang-block{
@@ -47,41 +72,13 @@
 
 .lang-title {
     text-align: center;
-}
 
-.lang-title h1{
-    font-size: 5em;
-    margin: 0;
-}
+    & > h1 {
+        font-size: 5em;
+        margin: 0;
 
-@media (max-width: 600px), (orientation: portrait) {
-    .lang-title h1{
-        font-size: 3em;
-    }
-
-    .langflavour{
-        width: 100%;
-        margin-bottom: 5vh;
-    }
-
-    .langwrap{
-        display: block;
-        margin: 0 auto 0 auto;
-    }
-
-    .lang-right h1{
-        display: none;
-    }
-
-    .lang-right div{
-        margin-top: .3vh;
-    }
-    
-    .langwrap{
-        width: 35%;
-    }
-
-    .mainlang-wrapper {
-        width: 80vw;
+        @include mobile {
+            font-size: 3em;
+        }
     }
 }

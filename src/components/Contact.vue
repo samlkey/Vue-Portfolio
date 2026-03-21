@@ -32,4 +32,4 @@ export default{
     }
 }
 </script>
-<style src="../css/Contact.css" />
+<style src="../css/Contact.scss" lang="scss" />

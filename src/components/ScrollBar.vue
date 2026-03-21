@@ -125,4 +125,4 @@ export default {
 }
 </script>
 
-<style src="../css/ScrollBar.css" />
+<style src="../css/ScrollBar.scss" lang="scss" />

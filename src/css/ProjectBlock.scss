@@ -36,8 +36,8 @@
 
 button {
     border-radius: 0;
-}
 
-button:hover {
-    cursor: pointer;
+    &:hover {
+        cursor: pointer;
+    }
 }

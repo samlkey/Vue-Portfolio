@@ -45,4 +45,4 @@
         }
     }
 </script>
-<style src="../css/Projects.css"></style>
+<style src="../css/Projects.scss" lang="scss"></style>

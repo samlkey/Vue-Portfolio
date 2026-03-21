@@ -1,0 +1,161 @@
+@import 'mixins';
+
+// ============================================
+// Variables
+// ============================================
+$content-padding-top: 15%;
+$content-padding-left: 12%;
+$content-font-size: 25px;
+$content-height-desktop: 20vh;
+$content-height-mobile: 10vh;
+$button-width: 18vw;
+$button-height: 7vh;
+$border-color: var(--text-colour);
+
+// ============================================
+// Main Container
+// ============================================
+#projectScroll {
+    height: 100vh;
+    background-color: var(--primary-colour);
+    color: var(--text-colour);
+}
+
+.projWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+// ============================================
+// Content Grid
+// ============================================
+.projContent {
+    background-color: var(--secondary-colour);
+    height: 70%;
+    width: 83%;
+    display: flex;
+    flex-wrap: wrap;
+
+    & p {
+        width: 40%;
+        margin-bottom: 10%;
+        color: var(--text-colour);
+
+        @include mobile {
+            width: 100%;
+            text-align: center;
+        }
+    }
+
+    & button {
+        font-size: 20px;
+        border: 1px solid $border-color;
+        width: $button-width;
+        height: $button-height;
+        background-color: var(--primary-colour);
+        color: var(--text-colour);
+        font-weight: bold;
+        border-radius: 0;
+        transition: transform 0.3s ease-in-out;
+
+        &:hover {
+            transform: scale(1.1);
+            cursor: pointer;
+        }
+
+        @include mobile {
+            width: 80%;
+            height: auto;
+            margin: 10px auto;
+            font-size: 16px;
+        }
+    }
+
+    @include mobile {
+        flex-direction: column;
+        height: auto;
+        padding: 1rem;
+        width: 90%;
+    }
+}
+
+// ============================================
+// Left Column
+// ============================================
+.projLeft {
+    border-right: 1px solid $border-color;
+    width: 50%;
+    box-sizing: border-box;
+
+    @include mobile {
+        width: 100%;
+        border-right: none;
+        padding: 1rem;
+    }
+}
+
+.projLeftContent {
+    padding-top: $content-padding-top;
+    padding-left: $content-padding-left;
+    font-size: $content-font-size;
+    width: 100%;
+
+    & div {
+        & p {
+            margin: 0;
+            height: $content-height-desktop;
+
+            @include mobile {
+                height: $content-height-mobile;
+            }
+        }
+    }
+
+    @include mobile {
+        padding-left: 0;
+        padding-top: 10%;
+        font-size: 1.5em;
+        text-align: center;
+    }
+}
+
+// ============================================
+// Right Column
+// ============================================
+.projRight {
+    width: 50%;
+    box-sizing: border-box;
+
+    @include mobile {
+        width: 100%;
+        border-right: none;
+        padding: 1rem;
+    }
+}
+
+.projRightContent {
+    padding-top: $content-padding-top;
+    padding-left: $content-padding-left;
+    font-size: $content-font-size;
+    width: 100%;
+
+    & div {
+        & p {
+            margin: 0;
+            height: $content-height-desktop;
+
+            @include mobile {
+                height: $content-height-mobile;
+            }
+        }
+    }
+
+    @include mobile {
+        padding-left: 0;
+        padding-top: 10%;
+        font-size: 1.5em;
+        text-align: center;
+    }
+}

@@ -23,4 +23,4 @@
         name: "AboutMe",
     }
 </script>
-<style src="../css/AboutMe.css" /> 
+<style src="../css/AboutMe.scss" lang="scss" /> 

@@ -1,0 +1,139 @@
+@import 'mixins';
+
+// ============================================
+// Variables
+// ============================================
+$desktop-gap: 25%;
+$desktop-width: 70vw;
+$mobile-gap: 2rem;
+$mobile-border-color: #ccc;
+
+// ============================================
+// Main Container
+// ============================================
+.aboutMe {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--primary-colour);
+    color: var(--text-colour);
+
+    @include mobile {
+        height: 100vh;
+        padding: 2rem;
+    }
+}
+
+// ============================================
+// Wrapper & Layout
+// ============================================
+.aboutMe-wrapper {
+    display: flex;
+    gap: $desktop-gap;
+    width: $desktop-width;
+    align-items: center;
+    justify-content: center;
+
+    & > div {
+        width: 50%;
+
+        @include mobile {
+            width: 100%;
+        }
+    }
+
+    @include mobile {
+        flex-direction: column;
+        gap: $mobile-gap;
+        width: 100%;
+    }
+}
+
+// ============================================
+// Typography
+// ============================================
+.aboutMeTitle {
+    font-size: 5em;
+    margin-bottom: 0;
+
+    @include mobile {
+        font-size: 3em;
+        margin-left: 5vw;
+    }
+}
+
+.left-content {
+    font-size: 2em;
+    width: 40vw;
+
+    @include mobile {
+        font-size: 1.5em;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+.left-flex {
+    @include mobile {
+        height: auto;
+        border-bottom: 1px solid $mobile-border-color;
+        padding-bottom: 11%;
+
+        & h1 {
+            font-size: 3em;
+            text-align: center;
+            margin: 0;
+        }
+    }
+}
+
+// ============================================
+// Language Wrapper
+// ============================================
+.lang-wrapper {
+    & p {
+        font-size: 2em;
+
+        @include mobile {
+            font-size: 1.5em;
+            width: 100%;
+            text-align: center;
+        }
+    }
+
+    & h1 {
+        @include mobile {
+            font-size: 3em;
+            text-align: center;
+        }
+    }
+
+    & svg {
+        fill: var(--text-colour);
+        height: 30vh;
+
+        @include mobile {
+            height: 20vh;
+        }
+    }
+
+    @include mobile {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+// ============================================
+// Images
+// ============================================
+.clipart-image {
+    width: 40vh;
+    height: auto;
+
+    @include mobile {
+        width: 25vh;
+        height: auto;
+    }
+}
