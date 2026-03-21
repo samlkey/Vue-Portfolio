@@ -28,7 +28,6 @@ export default {
            }
            
            e.preventDefault();
-           console.log(scrollDivs)
            this.Scroll(e)
            
            this.wheelCooldown = true;
@@ -50,8 +49,6 @@ export default {
                    deltaY: e.key === "ArrowDown" ? 1 : -1
                };
                this.Scroll(fakeEvent)
-
-               console.log(scrollDivs)
                
                this.wheelCooldown = true;
                setTimeout(() => {
@@ -69,9 +66,7 @@ export default {
                 //go down
                 this.pageIndex++
                 this.currentTab = document.getElementById(this.pageTags[this.pageIndex])
-                this.currentTab.scrollIntoView({
-                    behavior: 'smooth'
-                });
+                this.$emit('navigate', this.pageIndex);
 
                 //animations
                 this.animations.forEach(e => {
@@ -87,13 +82,13 @@ export default {
                 //go up
                 this.pageIndex--
                 this.currentTab = document.getElementById(this.pageTags[this.pageIndex])
-                this.currentTab.scrollIntoView()
+                this.$emit('navigate', this.pageIndex);
             }
             this.shouldScroll = false; 
 
             setTimeout(() => {
                 this.shouldScroll = true;
-            }, 400)
+            }, 800)
         },
         HandleAnimation(c){
             if(this.currentTab == null) return;

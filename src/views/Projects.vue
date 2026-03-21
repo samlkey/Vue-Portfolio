@@ -1,10 +1,17 @@
 <template>
-<div id="top" name="scroll"></div>
-  <div class="projects-content">
-    <Carousel :slides="slides" />
+  <div class="main">
+    <div class="content">
+      <div class="sections-wrapper" ref="sectionsWrapper">
+        <div id="top" name="scroll">
+          <div class="projects-content">
+            <Carousel :slides="slides" />
+          </div>
+        </div>
+        <Footer />
+      </div>
+    </div>
   </div>
-  <Footer @pageChange="handlePageChange" />
-  <ScrollBar ref="childRef"></ScrollBar>
+  <ScrollBar @navigate="handleNavigate"></ScrollBar>
 </template>
 
 <script>
@@ -49,6 +56,14 @@ export default {
         }
       ]
     };
+  },
+  methods: {
+    handleNavigate(index) {
+      const wrapper = this.$refs.sectionsWrapper;
+      if (wrapper) {
+        wrapper.style.transform = `translateY(-${index * 100}vh)`;
+      }
+    }
   }
 };
 </script>
