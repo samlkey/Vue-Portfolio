@@ -85,11 +85,6 @@
     }
 }
 
-.arrow:hover {
-    cursor: pointer; 
-    transform: translateY(3px);
-}
-
 .img-handle {
     @include mobile {
         width: 100vw;

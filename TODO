@@ -8,8 +8,8 @@ Use these Markdown checkboxes. Type `[ X ]` to check, `[ ]` to uncheck.
 - [ ] Add keyboard/touchpad scrolling functionality. 
 - [ ] Interactive objects should be minimum 44x44px on mobile. 
 - [ ] Have the burger icon morph into the cross on Model open. 
-- [ ] Refactor CSS to SCSS
-- [ ] Refactor ScrollBar functionality 
+- [ X ] Refactor CSS to SCSS
+- [ X ] Refactor ScrollBar functionality 
         (must be a better way to do this, loading a page at a time)
 
 # LANDING
@@ -20,11 +20,11 @@ Use these Markdown checkboxes. Type `[ X ]` to check, `[ ]` to uncheck.
 
 # EXPERIENCE
 
-- [ ] Implement code blocks as a carousel, looping endlessly.
+- [ X ] Implement code blocks as a carousel, looping endlessly.
 
 # PROJECTS
 
-- [ ] Fix mobile breakpoints for spacing. Everything beyond 640px is Mobile.
+- [ X ] Fix mobile breakpoints for spacing. Everything beyond 640px is Mobile.
 
 # FOOTER
 
