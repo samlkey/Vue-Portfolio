@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\samke\\\\Desktop\\\\Portfolio\" -Recurse -Force)",
+      "Bash(Select-Object FullName)",
+      "Bash(ConvertTo-Json)",
+      "Bash(dir /s /b src public dist)",
+      "Bash(xargs wc -l)",
+      "Bash(Get-Content \"C:\\\\Users\\\\samke\\\\Desktop\\\\Portfolio\\\\src\\\\css\\\\App.scss\" -TotalCount 120)",
+      "Bash(python \"C:\\\\Users\\\\samke\\\\.claude\\\\skills\\\\ui-ux-pro-max\\\\scripts\\\\search.py\" \"portfolio developer personal site modern smooth scroll\" --design-system -p \"Sam Key Portfolio\")",
+      "Bash(npm run *)",
+      "Bash(npm install *)",
+      "Bash(node -e \"const {createNoise2D} = require\\('simplex-noise'\\); const n = createNoise2D\\(\\); console.log\\('OK', n\\(0.1, 0.2\\)\\)\")"
+    ]
+  }
+}

@@ -1,143 +1,248 @@
 @import 'mixins';
 
 .home {
-    display: flex;  
-    height: 100vh; 
-    min-height: 100vh;
-    justify-content: center; 
-    align-items: center;
-}
-
-.home-backdrop {
     display: flex;
-    background-color: var(--second-colour);
-    justify-content: center; 
+    height: 100vh;
+    min-height: 100vh;
+    justify-content: center;
     align-items: center;
-    width: 100%;  
-    height: 50%; 
+    position: relative;
+    /* Own background — covers the topographic pattern on this section */
+    background: var(--second-colour);
+    overflow: hidden;
 
-    @include mobile {
-        flex-direction: column;
-        height: auto; /* Allow height to adjust based on content */
-        padding: 2rem; /* Add padding for mobile */
+    /* Wave line colour — very faint so hero content stays dominant */
+    color: rgba(255, 255, 255, 0.07);
+
+    /* Radial accent glow */
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background:
+            radial-gradient(ellipse 70% 55% at 50% 50%, rgba(65, 95, 150, 0.18) 0%, transparent 70%),
+            radial-gradient(ellipse 40% 35% at 20% 80%, rgba(65, 95, 150, 0.08) 0%, transparent 60%);
+        pointer-events: none;
     }
 }
 
-.home-backdrop-content {
-    width: 40rem;
-    max-width: 100%; /* Ensures content is responsive */
-    padding: 0 1rem; /* Adds padding for smaller screens */
+.hero {
+    position: relative; /* above the ::before glow */
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.3rem;
+    max-width: 820px;
+    width: 100%;
+    padding: 0 2.5rem;
+    animation: hero-enter 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-.home-backdrop-content-intro {
-    color: #b3b3b3;
-    padding-left: 3px;
-    margin: 0;
-
-    @include mobile {
-        text-align: center;
-        font-size: 2vh;
+@keyframes hero-enter {
+    from {
+        opacity: 0;
+        transform: translateY(28px);
     }
-}
-
-.home-backdrop-content-intro-name {
-    & > h1 {
-        margin: 0;
-        margin-top: 15px;
-        font-size: 9vh;
-        font-family: LeagueSpartan;
-        color: var(--text-colour);
-
-        @include mobile {
-            font-size: 6.5vh;
-        }
-    }
-
-    & > h2 {
-        font-size: 2rem;
-        color: var(--text-colour);
-        margin: 0;
-        font-family: LeagueSpartan;
-
-        @include mobile {
-            font-size: 3.5vh;
-            padding-bottom: 2rem;
-        }
-    }
-
-    @include mobile {
-        text-align: center;
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
-.home-backdrop-emoji {
-    width: 30vh;
-    height: auto;
-    background-color: var(--indent-colour);
+/* Badge */
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 1.1rem;
+    border: 1px solid rgba(127, 127, 127, 0.2);
+    border-radius: 100px;
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+    color: var(--textfade-colour);
+    background: var(--indent-colour);
+    cursor: default;
+}
+
+.badge-dot {
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
-    padding: 10% 10% 10% 10%;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-
-    @include mobile {
-        width: 15vh;
-        height: auto;
-        margin-top: 5vh;
-    }
+    background: #4ade80;
+    box-shadow: 0 0 8px #4ade80;
+    flex-shrink: 0;
+    animation: badge-pulse 2.2s ease-in-out infinite;
 }
 
-.img-handle {
-    @include mobile {
-        width: 100vw;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+@keyframes badge-pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.4; }
 }
 
-
-.btnwrapper{
-    @include mobile {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+/* Name — padding fixes background-clip clipping on ascenders */
+.hero-name {
+    margin: 0;
+    padding: 0.05em 0.15em;
+    font-size: clamp(4rem, 10vw, 7.5rem);
+    font-family: LeagueSpartan, system-ui, sans-serif;
+    line-height: 1.05;
+    background: linear-gradient(135deg, var(--text-colour) 25%, #415f96 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
-button {
-    width: 300px;
-    height: 50px;
-    font-weight: bold;
-    background: #181818;
-    color: white;
+/* Typewriter role */
+.hero-role {
+    margin: 0;
+    font-size: clamp(1.1rem, 2.8vw, 1.55rem);
+    color: var(--textfade-colour);
+    min-height: 1.8em;
+}
+
+.hero-role-typed {
+    color: var(--text-colour);
+    font-weight: 600;
+}
+
+.hero-cursor {
+    color: #415f96;
+    animation: cursor-blink 1s step-end infinite;
+}
+
+@keyframes cursor-blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+}
+
+/* Description */
+.hero-desc {
+    margin: 0;
+    font-size: clamp(0.95rem, 2vw, 1.1rem);
+    line-height: 1.75;
+    color: var(--textfade-colour);
+    max-width: 580px;
+}
+
+/* CTAs */
+.hero-ctas {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 0.4rem;
+}
+
+.cta-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 2rem;
+    background: var(--text-colour);
+    color: var(--main-colour);
+    border: none;
     border-radius: 10px;
-    border: 0;
-    font-size: 20px;
-    margin: 2vh 0;
-    transition: background-color 0.4s linear, color 0.4s linear; /* Combined transition for efficiency */
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    font-family: inherit;
+
+    svg {
+        width: 17px;
+        height: 17px;
+    }
 
     &:hover {
-        cursor: pointer;
-        background-color: #c9c9c9;
-        color: black; 
-        border: #c9c9c9; 
-    }
-
-    @include mobile {
-        width: 80%; 
-        font-size: 18px; 
-        height: 45px; 
-        margin: 0;
+        opacity: 0.82;
+        transform: translateY(-2px);
     }
 }
-  
-@keyframes float {
-    0% {
-        transform: translateY(0px);
+
+.cta-secondary {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.85rem 2rem;
+    background: transparent;
+    color: var(--text-colour);
+    border: 1px solid rgba(127, 127, 127, 0.3);
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    font-family: inherit;
+
+    &:hover {
+        background: rgba(127, 127, 127, 0.08);
+        border-color: rgba(127, 127, 127, 0.55);
+        transform: translateY(-2px);
     }
-    50% {
-        transform: translateY(10px);
+}
+
+/* Social links */
+.hero-socials {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 0.3rem;
+
+    a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        border-radius: 10px;
+        border: 1px solid rgba(127, 127, 127, 0.2);
+        color: var(--textfade-colour);
+        background: var(--indent-colour);
+        text-decoration: none;
+        transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+
+        svg {
+            width: 19px;
+            height: 19px;
+            fill: currentColor;
+        }
+
+        &:hover {
+            color: var(--text-colour);
+            border-color: rgba(127, 127, 127, 0.5);
+            background: rgba(127, 127, 127, 0.08);
+            transform: translateY(-2px);
+        }
+
+        &:focus-visible {
+            outline: 2px solid #415f96;
+            outline-offset: 2px;
+        }
     }
-    100% {
-        transform: translateY(0px);
+}
+
+/* Mobile */
+@include mobile {
+    .hero {
+        gap: 1rem;
+        padding: 0 1.5rem;
     }
+
+    .hero-ctas {
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+
+        .cta-primary,
+        .cta-secondary {
+            justify-content: center;
+            width: 100%;
+        }
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero            { animation: none; }
+    .badge-dot       { animation: none; }
+    .hero-cursor     { animation: none; }
 }

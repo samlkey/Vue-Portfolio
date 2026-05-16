@@ -1,62 +1,56 @@
-.toggle-wrapper{
-    margin-top: auto;
-    margin-bottom: auto;
-}
-
-.toggle{
+.theme-toggle {
     position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-}
-
-.toggle input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-.toggler {
-    position: absolute;
+    width: 2.9rem;
+    height: 2.9rem;
+    border: none;
+    background: transparent;
     cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: black;
-    background: rgb(211, 211, 211);
+    padding: 0;
+    color: var(--text-colour);
+    border-radius: 8px;
+    transition: background 0.2s ease;
+    flex-shrink: 0;
 
-    -webkit-transition: .4s; 
-    transition: .4s;
+    &:hover {
+        background: var(--indent-colour);
+    }
+
+    &:focus-visible {
+        outline: 2px solid #415f96;
+        outline-offset: 2px;
+    }
 }
 
-.toggler:before {
+.toggle-icon {
     position: absolute;
-    content: "";
-    height: 26px; 
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background: white;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    /* Start rotated away */
+    transform: rotate(90deg) scale(0.6);
+    transition:
+        opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.45s cubic-bezier(0.34, 1.4, 0.64, 1);
+    pointer-events: none;
 
-    -webkit-transition: .4s; 
-    transition: .4s;
+    svg {
+        width: 1.35rem;
+        height: 1.35rem;
+    }
+
+    &.visible {
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+    }
 }
 
-input:checked + .toggler{
-    background: rgb(31, 31, 31);
-}
+/* Sun rotates in from the opposite direction */
+.toggle-sun {
+    transform: rotate(-90deg) scale(0.6);
 
-input:checked + .toggler:before{
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
-}
-
-.toggler.round {
-    border-radius: 34px;
-}
-
-.toggler.round:before{
-    border-radius: 50%; 
+    &.visible {
+        transform: rotate(0deg) scale(1);
+    }
 }
