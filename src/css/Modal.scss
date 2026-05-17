@@ -36,9 +36,10 @@
     transform-origin: top right;
 
     @include mobile {
-        right: 5%;
-        width: calc(100vw - 10%);
-        top: calc(2.5vh + 4rem);
+        left: 4%;
+        right: 4%;
+        width: auto;
+        top: calc(2.5vh + 3.5rem);
     }
 }
 

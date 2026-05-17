@@ -10,7 +10,13 @@
       "Bash(python \"C:\\\\Users\\\\samke\\\\.claude\\\\skills\\\\ui-ux-pro-max\\\\scripts\\\\search.py\" \"portfolio developer personal site modern smooth scroll\" --design-system -p \"Sam Key Portfolio\")",
       "Bash(npm run *)",
       "Bash(npm install *)",
-      "Bash(node -e \"const {createNoise2D} = require\\('simplex-noise'\\); const n = createNoise2D\\(\\); console.log\\('OK', n\\(0.1, 0.2\\)\\)\")"
+      "Bash(node -e \"const {createNoise2D} = require\\('simplex-noise'\\); const n = createNoise2D\\(\\); console.log\\('OK', n\\(0.1, 0.2\\)\\)\")",
+      "Read(//c/Users/samke/.claude/skills/ui-ux-pro-max/**)",
+      "Bash(python scripts/search.py \"portfolio developer professional minimalist modern\" --design-system -p \"Sam Key Portfolio\" -f markdown)",
+      "Bash(python scripts/search.py \"professional developer portfolio dark light mode\" --domain color -n 5)",
+      "Bash(powershell -Command \"\\(Get-Content 'C:\\\\Users\\\\samke\\\\Desktop\\\\Portfolio\\\\src\\\\css\\\\App.scss' -Raw\\) -replace \\\\\"fill='%239C92AC' fill-opacity='0.3'\\\\\", \\\\\"fill='%236B8FC4' fill-opacity='0.18'\\\\\" | Set-Content 'C:\\\\Users\\\\samke\\\\Desktop\\\\Portfolio\\\\src\\\\css\\\\App.scss' -Encoding utf8\")",
+      "Bash(python skills/ui-ux-pro-max/scripts/search.py \"portfolio developer terminal console minimal dark\" --design-system -p \"Portfolio AboutMe\")",
+      "Bash(python \"C:\\\\Users\\\\samke\\\\.claude\\\\skills\\\\ui-ux-pro-max\\\\scripts\\\\search.py\" \"portfolio developer terminal console minimal dark\" --design-system -p \"Portfolio AboutMe\")"
     ]
   }
 }

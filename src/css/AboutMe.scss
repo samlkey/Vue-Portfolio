@@ -3,137 +3,319 @@
 // ============================================
 // Variables
 // ============================================
-$desktop-gap: 25%;
-$desktop-width: 70vw;
-$mobile-gap: 2rem;
-$mobile-border-color: #ccc;
+$terminal-bg:     #0C0C0C;
+$terminal-header: #2B2B2B;
+$terminal-border: #1A1A1A;
+$terminal-text:   #CCCCCC;
+$prompt-green:    #22C55E;
+$key-blue:        #7B9FD4;
+$divider-color:   #374151;
 
 // ============================================
-// Main Container
+// Main Section
 // ============================================
 .aboutMe {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    overflow: hidden;
     background-color: var(--primary-colour);
     color: var(--text-colour);
 
     @include mobile {
         height: 100vh;
-        padding: 2rem;
+        padding: 0 1.5rem;
     }
 }
 
 // ============================================
-// Wrapper & Layout
+// Wrapper Layout
 // ============================================
 .aboutMe-wrapper {
     display: flex;
-    gap: $desktop-gap;
-    width: $desktop-width;
     align-items: center;
     justify-content: center;
-
-    & > div {
-        width: 50%;
-
-        @include mobile {
-            width: 100%;
-        }
-    }
+    gap: 10rem;
+    width: 88vw;
+    max-width: 1300px;
 
     @include mobile {
         flex-direction: column;
-        gap: $mobile-gap;
+        gap: 2.5rem;
         width: 100%;
     }
 }
 
 // ============================================
-// Typography
+// Left Panel
 // ============================================
-.aboutMeTitle {
-    font-size: 5em;
-    margin-bottom: 0;
+.left-flex {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
 
     @include mobile {
-        font-size: 3em;
-        margin-left: 5vw;
+        align-items: center;
+        text-align: center;
+        gap: 0.6rem;
+        flex: none;
+    }
+}
+
+.about-eyebrow {
+    font-size: 0.8rem;
+    font-family: 'ClashDisplay-Semibold', 'ClashDisplay-Variable', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--textaccent-colour);
+    opacity: 0.9;
+}
+
+.aboutMeTitle {
+    font-size: clamp(3.2rem, 5.5vw, 5.5rem);
+    line-height: 1.05;
+    margin: 0;
+    font-family: 'ClashDisplay-Bold', 'ClashDisplay-Variable', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-colour);
+
+    @include mobile {
+        font-size: 2.4rem;
     }
 }
 
 .left-content {
-    font-size: 2em;
-    width: 40vw;
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    line-height: 1.7;
+    color: var(--textfade-colour);
+    max-width: 38ch;
+    margin: 0;
+    font-weight: 300;
 
     @include mobile {
-        font-size: 1.5em;
-        width: 100%;
-        text-align: center;
-    }
-}
-
-.left-flex {
-    @include mobile {
-        height: auto;
-        border-bottom: 1px solid $mobile-border-color;
-        padding-bottom: 11%;
-
-        & h1 {
-            font-size: 3em;
-            text-align: center;
-            margin: 0;
-        }
+        max-width: 100%;
+        font-size: 0.85rem;
     }
 }
 
 // ============================================
-// Language Wrapper
+// Skill Tags
 // ============================================
-.lang-wrapper {
-    & p {
-        font-size: 2em;
-
-        @include mobile {
-            font-size: 1.5em;
-            width: 100%;
-            text-align: center;
-        }
-    }
-
-    & h1 {
-        @include mobile {
-            font-size: 3em;
-            text-align: center;
-        }
-    }
-
-    & svg {
-        fill: var(--text-colour);
-        height: 30vh;
-
-        @include mobile {
-            height: 20vh;
-        }
-    }
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.25rem;
 
     @include mobile {
-        display: flex;
-        align-items: center;
         justify-content: center;
     }
 }
 
+.tag {
+    display: inline-block;
+    padding: 0.3rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.78rem;
+    font-family: 'ClashDisplay-Medium', 'ClashDisplay-Variable', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    background-color: var(--indent-colour);
+    color: var(--textaccent-colour);
+    border: 1px solid var(--secondary-colour);
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+
+    &:hover {
+        background-color: var(--secondary-colour);
+        border-color: var(--textaccent-colour);
+    }
+}
+
 // ============================================
-// Images
+// Terminal Wrapper
 // ============================================
-.clipart-image {
-    width: 40vh;
-    height: auto;
+.terminal-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     @include mobile {
-        width: 25vh;
-        height: auto;
+        width: 100%;
+        flex: none;
+    }
+}
+
+// ============================================
+// Terminal Window
+// ============================================
+.terminal {
+    width: 100%;
+    max-width: 560px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.06),
+        0 20px 50px rgba(0, 0, 0, 0.45),
+        0 4px 16px rgba(0, 0, 0, 0.3);
+    font-family: 'Consolas', 'Courier New', 'Menlo', monospace;
+
+    @include mobile {
+        max-width: 100%;
+        border-radius: 7px;
+    }
+}
+
+// ── Header ──────────────────────────────────
+.terminal-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1rem;
+    background: $terminal-header;
+    border-bottom: 1px solid $terminal-border;
+    user-select: none;
+
+    @include mobile {
+        padding: 0.45rem 0.75rem;
+    }
+}
+
+.terminal-dots {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+
+    &--red    { background: #FF5F57; }
+    &--yellow { background: #FEBC2E; }
+    &--green  { background: #28C840; }
+}
+
+.terminal-title {
+    flex: 1;
+    text-align: center;
+    color: #6B7280;
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+}
+
+.terminal-header-spacer {
+    width: 42px;
+    flex-shrink: 0;
+}
+
+// ── Body ────────────────────────────────────
+.terminal-body {
+    background: $terminal-bg;
+    padding: 1.25rem 1.5rem 1.5rem;
+    min-height: 300px;
+    color: $terminal-text;
+    font-size: 0.9rem;
+    line-height: 1.65;
+    overflow-x: auto;
+
+    @include mobile {
+        padding: 0.75rem 1rem;
+        min-height: 0;
+        max-height: 200px;
+        overflow: hidden;
+        font-size: 0.72rem;
+        line-height: 1.55;
+    }
+}
+
+// ── Input line ──────────────────────────────
+.terminal-line {
+    display: flex;
+    align-items: baseline;
+    gap: 0.4rem;
+    white-space: nowrap;
+}
+
+.prompt {
+    color: $prompt-green;
+    flex-shrink: 0;
+    font-weight: 600;
+}
+
+.command {
+    color: #E5E7EB;
+}
+
+.cursor {
+    color: #E5E7EB;
+    line-height: 1;
+}
+
+// ── Output lines ────────────────────────────
+.terminal-output {
+    margin-top: 0.15rem;
+}
+
+.output-line {
+    opacity: 0;
+    transform: translateY(3px);
+    transition: opacity 0.18s ease, transform 0.18s ease;
+    white-space: pre;
+
+    &.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.line-header {
+    color: #F1F5F9;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+}
+
+.divider-text {
+    color: $divider-color;
+}
+
+.line-key {
+    color: $key-blue;
+}
+
+.line-sep {
+    color: $divider-color;
+    margin: 0 0.45rem;
+}
+
+.line-value {
+    color: $terminal-text;
+}
+
+.new-prompt {
+    margin-top: 0.1rem;
+}
+
+// ── Blink animation ─────────────────────────
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+}
+
+.blink {
+    animation: blink 1s step-end infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .output-line {
+        transition: none;
+    }
+    .blink {
+        animation: none;
     }
 }

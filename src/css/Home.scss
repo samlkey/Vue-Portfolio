@@ -20,8 +20,8 @@
         position: absolute;
         inset: 0;
         background:
-            radial-gradient(ellipse 70% 55% at 50% 50%, rgba(65, 95, 150, 0.18) 0%, transparent 70%),
-            radial-gradient(ellipse 40% 35% at 20% 80%, rgba(65, 95, 150, 0.08) 0%, transparent 60%);
+            radial-gradient(ellipse 70% 55% at 50% 50%, rgba(79, 111, 191, 0.2) 0%, transparent 70%),
+            radial-gradient(ellipse 40% 35% at 20% 80%, rgba(79, 111, 191, 0.1) 0%, transparent 60%);
         pointer-events: none;
     }
 }
@@ -86,9 +86,10 @@
     margin: 0;
     padding: 0.05em 0.15em;
     font-size: clamp(4rem, 10vw, 7.5rem);
-    font-family: LeagueSpartan, system-ui, sans-serif;
+    font-family: 'ClashDisplay-Bold', 'ClashDisplay-Variable', sans-serif;
+    font-weight: 700;
     line-height: 1.05;
-    background: linear-gradient(135deg, var(--text-colour) 25%, #415f96 100%);
+    background: linear-gradient(135deg, var(--text-colour) 25%, #4F6FBF 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -100,6 +101,7 @@
     font-size: clamp(1.1rem, 2.8vw, 1.55rem);
     color: var(--textfade-colour);
     min-height: 1.8em;
+    font-weight: 300;
 }
 
 .hero-role-typed {
@@ -108,7 +110,7 @@
 }
 
 .hero-cursor {
-    color: #415f96;
+    color: #4F6FBF;
     animation: cursor-blink 1s step-end infinite;
 }
 
@@ -124,6 +126,7 @@
     line-height: 1.75;
     color: var(--textfade-colour);
     max-width: 580px;
+    font-weight: 300;
 }
 
 /* CTAs */
@@ -215,7 +218,7 @@
         }
 
         &:focus-visible {
-            outline: 2px solid #415f96;
+            outline: 2px solid #4F6FBF;
             outline-offset: 2px;
         }
     }
