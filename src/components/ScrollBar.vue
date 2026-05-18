@@ -21,6 +21,8 @@ export default {
             this.currentTab = document.getElementById(this.pageTags[0]);
         }
 
+        this.updateOverscroll();
+
         window.addEventListener("wheel", (e) => {
             e.preventDefault();
             if (!this.isAnimating) this.Scroll(e);
@@ -50,6 +52,10 @@ export default {
         }, { passive: true });
     },
     methods: {
+        updateOverscroll() {
+            document.documentElement.style.overscrollBehaviorY =
+                this.pageIndex === 0 ? 'auto' : 'none';
+        },
         Scroll(e) {
             if (this.isAnimating) return;
             if (this.currentTab == null) return;
@@ -65,6 +71,7 @@ export default {
                 this.$emit('navigate', this.pageIndex);
             }
 
+            this.updateOverscroll();
             this.isAnimating = true;
             setTimeout(() => { this.isAnimating = false; }, TRANSITION_MS + 50);
         },
@@ -75,6 +82,7 @@ export default {
             this.currentTab = document.getElementById(this.pageTags[index]);
             this.$emit('navigate', index);
             if (index > prevIndex) this.triggerAnimations();
+            this.updateOverscroll();
             this.isAnimating = true;
             setTimeout(() => { this.isAnimating = false; }, TRANSITION_MS + 50);
         },
