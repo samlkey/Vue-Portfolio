@@ -11,7 +11,6 @@
                         <div class="proj-header">
                             <div class="proj-header-left">
                                 <span class="proj-eyebrow">My Work</span>
-                                <h1 class="proj-page-title">Selected Projects</h1>
                             </div>
                             <div class="proj-header-actions">
                                 <a href="https://github.com/samlkey" target="_blank" rel="noopener noreferrer" class="proj-hero-btn proj-hero-btn--primary" aria-label="View all on GitHub">
@@ -29,8 +28,8 @@
                             </div>
                         </div>
 
-                        <!-- Cards grid -->
-                        <div class="proj-grid" ref="grid">
+                        <!-- Cards grid / mobile carousel -->
+                        <div class="proj-grid" ref="grid" @scroll.passive="onGridScroll">
                             <article
                                 v-for="(project, i) in projects"
                                 :key="project.title"
@@ -38,7 +37,6 @@
                                 :class="{ 'is-visible': revealed }"
                                 :style="{ transitionDelay: (i * 0.1) + 's' }"
                             >
-                                <!-- Card image -->
                                 <div class="proj-card-img-wrap">
                                     <img :src="project.image" :alt="project.title" class="proj-card-img" />
                                 </div>
@@ -77,6 +75,17 @@
                             </article>
                         </div>
 
+                        <!-- Pagination dots — mobile carousel only -->
+                        <div class="proj-carousel-dots" aria-hidden="true">
+                            <button
+                                v-for="(_, i) in projects"
+                                :key="i"
+                                class="proj-carousel-dot"
+                                :class="{ 'is-active': i === currentCard }"
+                                @click="scrollToCard(i)"
+                            />
+                        </div>
+
                     </div>
                 </div>
 
@@ -99,6 +108,7 @@ export default {
     data() {
         return {
             revealed: false,
+            currentCard: 0,
             projects: [
                 {
                     title: 'Wordle Clone App',
@@ -138,6 +148,21 @@ export default {
             const wrapper = this.$refs.sectionsWrapper;
             if (wrapper) {
                 wrapper.style.transform = `translateY(-${index * 100}vh)`;
+            }
+        },
+        onGridScroll() {
+            const grid = this.$refs.grid;
+            if (!grid || !grid.firstElementChild) return;
+            const cardWidth = grid.firstElementChild.offsetWidth;
+            const gap = parseFloat(getComputedStyle(grid).columnGap) || 0;
+            this.currentCard = Math.round(grid.scrollLeft / (cardWidth + gap));
+        },
+        scrollToCard(i) {
+            const grid = this.$refs.grid;
+            if (!grid) return;
+            const card = grid.children[i];
+            if (card) {
+                card.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
             }
         },
     },
