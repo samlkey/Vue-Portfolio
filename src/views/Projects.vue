@@ -38,7 +38,7 @@
                                 :style="{ transitionDelay: (i * 0.1) + 's' }"
                             >
                                 <div class="proj-card-img-wrap">
-                                    <img :src="project.image" :alt="project.title" class="proj-card-img" />
+                                    <img :src="isMobile ? project.mobileImage : project.image" :alt="project.title" class="proj-card-img" />
                                 </div>
 
                                 <div class="proj-card-body">
@@ -109,11 +109,13 @@ export default {
         return {
             revealed: false,
             currentCard: 0,
+            isMobile: false,
             projects: [
                 {
                     title: 'Wordle Clone App',
                     description: 'A faithful recreation of the viral word-guessing game built with React. Includes full game logic, colour-coded feedback, and keyboard support.',
-                    image: require('@/assets/WordleCap.png'),
+                    image: require('@/assets/img-desktop/WordleCap.png'),
+                    mobileImage: require('@/assets/img-mobile/WordleCap.png'),
                     tags: ['React', 'JavaScript'],
                     liveHref: 'https://samlkey.github.io/Wordle-Clone/',
                     githubHref: 'https://github.com/samlkey/Wordle-Clone',
@@ -122,7 +124,8 @@ export default {
                 {
                     title: 'OSRS Combat Level Guesser',
                     description: 'A higher/lower guessing game built around Old School RuneScape monsters, with a React frontend, Express.js backend, and live OSRS wiki data.',
-                    image: require('@/assets/gameScreenshot.png'),
+                    image: require('@/assets/img-desktop/gameScreenshot.png'),
+                    mobileImage: require('@/assets/img-mobile/mobhighlow_mobile.png'),
                     tags: ['React', 'Express.js', 'JavaScript'],
                     liveHref: 'https://samlkey.github.io/MobHighLow/',
                     githubHref: 'https://github.com/samlkey/MobHighLow',
@@ -131,7 +134,8 @@ export default {
                 {
                     title: 'Vinyl Collection',
                     description: 'A full-stack web app for cataloguing and managing vinyl record collections, built with React.',
-                    image: require('@/assets/vinylscreenshot.png'),
+                    image: require('@/assets/img-desktop/vinylscreenshot.png'),
+                    mobileImage: require('@/assets/img-mobile/vinyl_mobile.png'),
                     tags: ['Blazor', '.NET', 'Entity Framework', 'C#'],
                     liveHref: 'https://vinyl-collection.co.uk/',
                     githubHref: 'https://github.com/samlkey/VinylCollection',
@@ -142,6 +146,13 @@ export default {
     },
     mounted() {
         this.revealed = true;
+        this._mql = window.matchMedia('(max-width: 800px), (orientation: portrait)');
+        this.isMobile = this._mql.matches;
+        this._mqlHandler = (e) => { this.isMobile = e.matches; };
+        this._mql.addEventListener('change', this._mqlHandler);
+    },
+    beforeUnmount() {
+        this._mql?.removeEventListener('change', this._mqlHandler);
     },
     methods: {
         handleNavigate(index) {

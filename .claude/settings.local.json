@@ -19,7 +19,9 @@
       "Bash(python \"C:\\\\Users\\\\samke\\\\.claude\\\\skills\\\\ui-ux-pro-max\\\\scripts\\\\search.py\" \"portfolio developer terminal console minimal dark\" --design-system -p \"Portfolio AboutMe\")",
       "mcp__Claude_Preview__preview_start",
       "Bash(python skills/ui-ux-pro-max/scripts/search.py \"portfolio projects showcase dark professional\" --design-system -p \"Sam Key Portfolio\" -f markdown)",
-      "Bash(python \"C:\\\\Users\\\\samke\\\\.claude\\\\skills\\\\ui-ux-pro-max\\\\scripts\\\\search.py\" \"portfolio projects showcase dark professional\" --design-system -p \"Sam Key Portfolio\" -f markdown)"
+      "Bash(python \"C:\\\\Users\\\\samke\\\\.claude\\\\skills\\\\ui-ux-pro-max\\\\scripts\\\\search.py\" \"portfolio projects showcase dark professional\" --design-system -p \"Sam Key Portfolio\" -f markdown)",
+      "PowerShell(Rename-Item \"C:\\\\Users\\\\samke\\\\Desktop\\\\Portfolio\\\\src\\\\assets\\\\img-mobile\\\\mobhighlow_mobile.PNG\" \"mobhighlow_mobile.png\")",
+      "PowerShell(Rename-Item \"C:\\\\Users\\\\samke\\\\Desktop\\\\Portfolio\\\\src\\\\assets\\\\img-mobile\\\\vinyl_mobile.PNG\" \"vinyl_mobile.png\")"
     ]
   }
 }
