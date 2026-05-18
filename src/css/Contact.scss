@@ -1,170 +1,371 @@
 @import 'mixins';
 
 // ============================================
-// Main Container
+// Section Container
 // ============================================
 #contactScroll {
     height: 100vh;
-    min-height: 100vh;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     background-color: var(--main-colour);
+    color: var(--text-colour);
+    overflow: hidden;
 
     @include mobile {
-        height: 100vh;
+        align-items: flex-start;
+        overflow-y: auto;
+        overflow-x: hidden;
     }
 }
 
-.contactContent {
-    background-color: var(--main-colour);
-    width: 100%;
+// ============================================
+// Two-column wrapper
+// ============================================
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1.35fr;
+    gap: 5rem;
+    width: 88vw;
+    max-width: 1200px;
+    align-items: center;
+
+    @include mobile {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+        width: 90vw;
+        padding: 4rem 0 2rem;
+    }
 }
 
 // ============================================
-// Typography
+// Left info panel
 // ============================================
-.conTitle {
-    text-align: center;
-    margin-top: 5vh;
-    font-size: 3.3em;
-    font-weight: bold;
-    margin-bottom: 0;
-    font-family: LeagueSpartan;
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+
+    &.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    @include mobile {
+        gap: 1rem;
+    }
+}
+
+.contact-eyebrow {
+    display: block;
+    font-size: 0.72rem;
+    font-family: 'ClashDisplay-Semibold', 'ClashDisplay-Variable', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--textaccent-colour);
+}
+
+.contact-heading {
+    font-size: clamp(2.8rem, 4.5vw, 4.2rem);
+    font-family: 'ClashDisplay-Bold', 'ClashDisplay-Variable', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    margin: 0;
     color: var(--text-colour);
 
     @include mobile {
-        font-size: 2.5em;
-        margin-top: 8vh;
+        font-size: 2.4rem;
     }
 }
 
-// ============================================
-// Contact Form
-// ============================================
-.contact {
-    text-align: center;
-
-    & > p {
-        font-size: 1.3em;
-        width: 60%;
-        margin: 0 auto;
-        margin-bottom: 3%;
-        color: var(--text-colour);
-
-        @include mobile {
-            font-size: 1.3em;
-            width: 90%;
-        }
-    }
-
-    & > form {
-        font-size: 10px;
-        width: 50vw;
-        margin: 0 auto;
-        padding-bottom: 2%;
-
-        @include mobile {
-            width: 90%;
-        }
-    }
+.contact-subheading {
+    font-size: clamp(0.9rem, 1.2vw, 1rem);
+    line-height: 1.75;
+    color: var(--textfade-colour);
+    max-width: 38ch;
+    margin: 0;
+    font-weight: 300;
 
     @include mobile {
-        margin-bottom: 8vh;
+        max-width: 100%;
+        font-size: 0.9rem;
     }
 }
 
-.inputTag {
+// ============================================
+// Contact links
+// ============================================
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    margin-top: 0.5rem;
+
+    @include mobile {
+        flex-direction: row;
+        gap: 0.65rem;
+        margin-top: 0.25rem;
+    }
+}
+
+.contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.85rem 1.1rem;
+
+    @include mobile {
+        width: 52px;
+        height: 52px;
+        padding: 0;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+    border-radius: 10px;
+    border: 1px solid var(--secondary-colour);
+    background: var(--indent-colour);
+    text-decoration: none;
+    color: var(--text-colour);
+    transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+    cursor: pointer;
+
+    &:hover {
+        border-color: var(--textaccent-colour);
+        background: rgba(79, 111, 191, 0.06);
+        transform: translateX(4px);
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--textaccent-colour);
+        outline-offset: 2px;
+    }
+}
+
+.contact-link-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    background: var(--primary-colour);
+    border: 1px solid var(--secondary-colour);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--textaccent-colour);
+    flex-shrink: 0;
+
+    svg {
+        width: 17px;
+        height: 17px;
+    }
+}
+
+.contact-link-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+
     @include mobile {
         display: none;
-        width: 90%;
-
-        & p {
-            font-size: 13px;
-        }
     }
 }
 
-.subjectFlex {
-    display: flex;
-    justify-content: center;
-    gap: 1%;
-    margin-bottom: 5vh;
-    width: 51.3vw;
+.contact-link-label {
+    font-size: 0.72rem;
+    font-family: 'ClashDisplay-Medium', 'ClashDisplay-Variable', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--textfade-colour);
+}
 
-    & > input {
-        border: 0;
-        padding: 10px;
-        border-bottom: 1px solid var(--text-colour);
-        background-color: var(--second-colour);
-        color: var(--text-colour);
-        font-weight: bold;
-        font-size: 15px;
-        outline: none;
+.contact-link-value {
+    font-size: 0.88rem;
+    font-weight: 400;
+    color: var(--text-colour);
+}
+
+// ============================================
+// Right form panel
+// ============================================
+.contact-form-panel {
+    background: var(--indent-colour);
+    border: 1px solid var(--secondary-colour);
+    border-radius: 16px;
+    padding: 2.5rem;
+
+    @include mobile {
+        padding: 1.25rem;
+    }
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+
+    &.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    @include mobile {
+        padding: 1.5rem;
+        border-radius: 12px;
+    }
+}
+
+// ============================================
+// Form layout
+// ============================================
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.1rem;
+
+    @include mobile {
+        grid-template-columns: 1fr;
+        gap: 1.1rem;
+    }
+}
+
+// ============================================
+// Form fields
+// ============================================
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+
+    label {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 0.78rem;
+        font-family: 'ClashDisplay-Medium', 'ClashDisplay-Variable', sans-serif;
+        font-weight: 500;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--textfade-colour);
+    }
+
+    input,
+    textarea {
         width: 100%;
+        background: var(--primary-colour);
+        border: 1px solid var(--secondary-colour);
+        border-radius: 8px;
+        padding: 0.75rem 1rem;
+        font-size: 0.92rem;
+        font-family: 'ClashDisplay-Regular', 'ClashDisplay-Variable', system-ui, sans-serif;
+        font-weight: 400;
+        color: var(--text-colour);
+        outline: none;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        box-sizing: border-box;
+
+        &::placeholder {
+            color: var(--textfade-colour);
+            opacity: 0.6;
+        }
+
+        &:focus {
+            border-color: var(--textaccent-colour);
+            box-shadow: 0 0 0 3px rgba(79, 111, 191, 0.12);
+        }
+    }
+
+    textarea {
+        resize: none;
+        line-height: 1.65;
 
         @include mobile {
-            font-size: 14px;
+            height: 90px;
+        }
+    }
+}
+
+// ============================================
+// Character counter
+// ============================================
+.char-counter {
+    font-size: 0.72rem;
+    font-family: 'ClashDisplay-Regular', 'ClashDisplay-Variable', sans-serif;
+    font-weight: 400;
+    color: var(--textfade-colour);
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+// ============================================
+// Submit button
+// ============================================
+.contact-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.85rem 1.5rem;
+    background: var(--text-colour);
+    color: var(--main-colour);
+    border: none;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-family: 'ClashDisplay-Semibold', 'ClashDisplay-Variable', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    letter-spacing: 0.02em;
+    margin-top: 0.25rem;
+
+    svg {
+        width: 17px;
+        height: 17px;
+        transition: transform 0.2s ease;
+    }
+
+    &:hover {
+        opacity: 0.82;
+        transform: translateY(-2px);
+
+        svg {
+            transform: translateX(3px);
         }
     }
 
-    @include mobile {
-        flex-direction: column;
-        gap: 1rem;
-        margin-bottom: 3vh;
-        margin-top: 5vh;
-        width: 85vw;
+    &:focus-visible {
+        outline: 2px solid var(--textaccent-colour);
+        outline-offset: 3px;
     }
-}
 
-.textarea-label {
-    text-align: left;
-    margin: 0 !important;
-    width: 100% !important;
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none;
+    }
 }
 
 // ============================================
-// Form Elements
+// Reduced motion
 // ============================================
-form textarea {
-    background-color: var(--second-colour);
-    resize: none;
-    border: 0;
-    border-bottom: 1px solid var(--text-colour);
-    width: 100%;
-    outline: none;
-    font-weight: bold;
-    font-size: 15px;
-    color: var(--text-colour);
-    padding: 7px;
-    height: 8vh;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-
-    @include mobile {
-        height: 6vh;
-        font-size: 14px;
-        width: 80vw;
+@media (prefers-reduced-motion: reduce) {
+    .contact-info,
+    .contact-form-panel {
+        transition: none;
+        opacity: 1;
+        transform: none;
     }
-}
 
-.submit {
-    font-size: 15px;
-    border: 1px solid var(--text-colour);
-    width: 15vw;
-    height: 5vh;
-    background-color: var(--second-colour);
-    color: var(--text-colour);
-    margin-top: 5vh;
-    font-weight: bold;
-
-    @include mobile {
-        width: 80%;
-        font-size: 14px;
+    .contact-link,
+    .contact-submit {
+        transition: none;
     }
-}
-
-form input[type="submit"]:hover {
-    transform: scale(1.1);
-    cursor: pointer;
-    transition: transform 0.3s ease-in-out;
 }

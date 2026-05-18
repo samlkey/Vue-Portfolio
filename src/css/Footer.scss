@@ -1,137 +1,365 @@
 @import 'mixins';
 
+// ============================================
+// Section Container
+// ============================================
 .footer {
     height: 100vh;
-    min-height: 100vh;
-    background-color: var(--primary-colour);
+    background-color: var(--second-colour);
     color: var(--text-colour);
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 
     @include mobile {
-        height: auto;
-        padding: 2rem;
+        height: 100vh;
+        align-items: center;
     }
 }
 
-.footerContent {
-    width: 80vw;
+.footer-inner {
+    width: 88vw;
+    max-width: 1360px;
+    height: 72vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     @include mobile {
         width: 90vw;
-        text-align: center;
+        height: auto;
+        gap: 3rem;
     }
 }
 
-.footerTop {
-    border-bottom: 1px solid var(--text-colour);
-    padding-bottom: 15vh;
+// ============================================
+// CTA Block
+// ============================================
+.footer-cta {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-top: 2rem;
 
     @include mobile {
-        padding-bottom: 5vh;
+        gap: 1rem;
+        padding-top: 0;
     }
 }
 
-.topFlex {
-    display: flex;
-    gap: 25%;
+.footer-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    font-family: 'ClashDisplay-Semibold', 'ClashDisplay-Variable', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--textaccent-colour);
 
+    &::before {
+        content: '';
+        display: inline-block;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #4ade80;
+        box-shadow: 0 0 8px #4ade80;
+        animation: footer-pulse 2.2s ease-in-out infinite;
+    }
+}
 
-    & > div > p {
-        position: relative;
-        z-index: 1;
+@keyframes footer-pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.35; }
+}
 
-        font-size: 25px;
-        font-family: LeagueSpartan;
+.footer-heading {
+    font-size: clamp(3rem, 6vw, 6rem);
+    font-family: 'ClashDisplay-Bold', 'ClashDisplay-Variable', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    margin: 0;
+    color: var(--text-colour);
 
-        &::before {
-            content: '';
-            position: absolute;
-            width: 80px;
-            height: 20px;
-            background-color: var(--textaccent-colour);
-            top: -2px;   /* adjust for vertical offset */
-            left: -15px;  /* adjust for horizontal offset */
-            opacity: 0;
-            transition: opacity 0.3s;
-            z-index: -1;
-        }
+    @include mobile {
+        font-size: clamp(2.4rem, 9vw, 3.5rem);
+    }
+}
 
-        &:hover::before {
-            opacity: 1;
+.footer-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.85rem 2rem;
+    background: var(--text-colour);
+    color: var(--main-colour);
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: 'ClashDisplay-Semibold', 'ClashDisplay-Variable', sans-serif;
+    font-weight: 600;
+    text-decoration: none;
+    width: fit-content;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    letter-spacing: 0.02em;
+
+    svg {
+        width: 17px;
+        height: 17px;
+        transition: transform 0.2s ease;
+    }
+
+    &:hover {
+        opacity: 0.82;
+        transform: translateY(-2px);
+
+        svg {
+            transform: translateX(3px);
         }
     }
+
+    &:focus-visible {
+        outline: 2px solid var(--textaccent-colour);
+        outline-offset: 3px;
+    }
+
+    @include mobile {
+        font-size: 0.9rem;
+        padding: 0.75rem 1.6rem;
+    }
+}
+
+// ============================================
+// Bottom bar
+// ============================================
+.footer-divider {
+    width: 100%;
+    height: 1px;
+    background: var(--secondary-colour);
+    margin-bottom: 1.75rem;
+}
+
+.footer-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 2rem;
 
     @include mobile {
         flex-direction: column;
-        gap: 15%;
-        font-size: 18px;
+        align-items: flex-start;
+        gap: 1.5rem;
+        padding-bottom: 1rem;
     }
 }
 
-.footerIcons {
+// ============================================
+// Branding
+// ============================================
+.footer-brand {
     display: flex;
-    gap: 5%;
-    padding-top: 3%;
+    flex-direction: column;
+    gap: 0.2rem;
+}
 
-    & > div {
-        width: 50%;
+.footer-name {
+    font-size: 1rem;
+    font-family: 'ClashDisplay-Bold', 'ClashDisplay-Variable', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text-colour);
+}
 
-        @include mobile {
+.footer-copy {
+    font-size: 0.78rem;
+    color: var(--textfade-colour);
+    font-weight: 300;
+}
+
+// ============================================
+// Nav links
+// ============================================
+.footer-nav {
+    display: flex;
+    gap: 2rem;
+
+    @include mobile {
+        gap: 1.5rem;
+    }
+}
+
+.footer-nav-link {
+    font-size: 0.88rem;
+    font-family: 'ClashDisplay-Medium', 'ClashDisplay-Variable', sans-serif;
+    font-weight: 500;
+    color: var(--textfade-colour);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background: var(--textaccent-colour);
+        transition: width 0.2s ease;
+    }
+
+    &:hover {
+        color: var(--text-colour);
+
+        &::after {
             width: 100%;
         }
     }
 
-    @include mobile {
-        flex-direction: column;
-        padding-top: 5vh;
+    &:focus-visible {
+        outline: 2px solid var(--textaccent-colour);
+        outline-offset: 3px;
+        border-radius: 2px;
     }
 }
 
-.copyright {
-    font-size: 25px;
-    font-family: LeagueSpartan;
-
-    @include mobile {
-        font-size: 20px;
-    }
-}
-
-.icons {
+// ============================================
+// Social icons
+// ============================================
+.footer-socials {
     display: flex;
-    justify-content: flex-end;
-    gap: 3%;
-    align-items: center;
-
-    & > div {
-        width: 5% !important;
-
-        @include mobile {
-            width: 10%;
-        }
-    }
-
-    @include mobile {
-        justify-content: center;
-        width: 100%;
-        gap: 5%;
-    }
+    gap: 0.65rem;
 }
 
-.icon {
-    width: 2.5rem;
-    height: auto;
-    fill: var(--text-colour);
-    -webkit-animation: scale-down-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-    animation: scale-down-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+.footer-social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 9px;
+    border: 1px solid var(--secondary-colour);
+    background: var(--indent-colour);
+    color: var(--textfade-colour);
+    text-decoration: none;
+    transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+
+    svg {
+        width: 17px;
+        height: 17px;
+        fill: currentColor;
+    }
 
     &:hover {
-        -webkit-animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-        animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+        color: var(--text-colour);
+        border-color: rgba(127,127,127,0.5);
+        background: rgba(127,127,127,0.08);
+        transform: translateY(-2px);
     }
 
-    @include mobile {
-        height: 30px;
+    &:focus-visible {
+        outline: 2px solid var(--textaccent-colour);
+        outline-offset: 2px;
+    }
+}
+
+// ============================================
+// Entrance animations
+// ============================================
+
+// Eyebrow — fade + slide up
+.footer-eyebrow {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+
+    &.anim-in {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// Heading lines — clip reveal (text slides up out of overflow:hidden wrapper)
+.heading-line {
+    display: block;
+    overflow: hidden;
+    line-height: 1.1;
+
+    & > span {
+        display: block;
+        transform: translateY(100%);
+        transition: transform 0.72s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    &.anim-in > span {
+        transform: translateY(0);
+    }
+}
+
+// CTA button — fade + slide up
+.footer-cta-btn {
+    opacity: 0;
+    transform: translateY(16px);
+    // merge with existing hover transitions
+    transition: opacity 0.45s ease, transform 0.45s ease;
+
+    &.anim-in {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    // keep hover working after entrance
+    &.anim-in:hover {
+        opacity: 0.82;
+        transform: translateY(-2px);
+    }
+}
+
+// Divider — scaleX sweep left → right
+.footer-divider {
+    transform-origin: left center;
+    transform: scaleX(0);
+    transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+
+    &.anim-in {
+        transform: scaleX(1);
+    }
+}
+
+// Bottom bar items — fade + slide up
+.anim-fade {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+
+    &.anim-in {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// ============================================
+// Reduced motion
+// ============================================
+@media (prefers-reduced-motion: reduce) {
+    .footer-eyebrow::before { animation: none; }
+
+    .footer-eyebrow,
+    .heading-line > span,
+    .footer-cta-btn,
+    .footer-divider,
+    .anim-fade {
+        transition: none;
+        opacity: 1;
+        transform: none;
+    }
+
+    .footer-cta-btn,
+    .footer-social,
+    .footer-nav-link::after {
+        transition: none;
     }
 }

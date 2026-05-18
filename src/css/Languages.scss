@@ -353,6 +353,50 @@
 }
 
 // ============================================
+// Compact layout for shorter viewports (e.g. 1920×1080)
+// The full-desc cards overflow 100vh at ~1080px height
+// ============================================
+@media (max-height: 1100px) and (min-width: 801px) {
+    .experience-wrapper {
+        gap: 3.5rem;
+    }
+
+    .tl-item {
+        padding: 0.3rem 0;
+    }
+
+    .tl-marker {
+        padding: 0.65rem 0;
+    }
+
+    .tl-card {
+        padding: 0.55rem 0.9rem;
+    }
+
+    .tl-org {
+        margin: 0.1rem 0 0.1rem;
+    }
+
+    .tl-role {
+        margin: 0 0 0.3rem;
+    }
+
+    .tl-desc {
+        display: none;
+    }
+
+    .tl-desc-short {
+        display: block;
+        font-size: 0.8rem;
+        font-family: 'ClashDisplay-Regular', 'ClashDisplay-Variable', sans-serif;
+        font-weight: 400;
+        color: var(--textfade-colour);
+        line-height: 1.5;
+        margin: 0.1rem 0 0;
+    }
+}
+
+// ============================================
 // Reduced motion
 // ============================================
 @media (prefers-reduced-motion: reduce) {
