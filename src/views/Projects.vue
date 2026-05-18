@@ -38,41 +38,13 @@
                                 :class="{ 'is-visible': revealed }"
                                 :style="{ transitionDelay: (i * 0.1) + 's' }"
                             >
-                                <!-- Browser frame -->
-                                <a
-                                    :href="project.liveHref || project.githubHref"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="browser-frame"
-                                    :aria-label="`Open ${project.title}`"
-                                >
-                                    <div class="browser-bar">
-                                        <div class="browser-dots">
-                                            <span class="browser-dot browser-dot--red"></span>
-                                            <span class="browser-dot browser-dot--yellow"></span>
-                                            <span class="browser-dot browser-dot--green"></span>
-                                        </div>
-                                        <div class="browser-url">{{ project.displayUrl }}</div>
-                                        <div class="browser-dots-spacer"></div>
-                                    </div>
-                                    <div class="browser-body">
-                                        <img :src="project.image" :alt="project.title" class="proj-card-img" />
-                                        <div class="browser-overlay">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                                <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/>
-                                                <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </a>
+                                <!-- Card image -->
+                                <div class="proj-card-img-wrap">
+                                    <img :src="project.image" :alt="project.title" class="proj-card-img" />
+                                </div>
 
                                 <div class="proj-card-body">
-                                    <div class="proj-card-top">
-                                        <span class="proj-num">{{ String(i + 1).padStart(2, '0') }}</span>
-                                        <div class="proj-tags">
-                                            <span v-for="tag in project.tags" :key="tag" class="proj-tag">{{ tag }}</span>
-                                        </div>
-                                    </div>
+                                    <span class="proj-card-url">{{ project.displayUrl }}</span>
                                     <h2 class="proj-title">{{ project.title }}</h2>
                                     <p class="proj-desc">{{ project.description }}</p>
                                     <div class="proj-actions">
